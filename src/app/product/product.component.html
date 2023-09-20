@@ -1,0 +1,23 @@
+<div>
+  <h1>Product Data</h1>
+  <form [formGroup]="loginForm" (ngSubmit)="LoginForm()">
+    <input type="number" placeholder="Enter ID" formControlName="id" oninput="this.value=Math.abs(this.value)" />
+    <br /><span id="error" *ngIf="id && id.invalid && id.touched">*Invalid Id<br /></span><br />
+
+    <input type="text" placeholder="Enter Description" formControlName="description" />
+    <br /><span id="error" *ngIf="description && description.invalid && description.touched">*Invalid
+      Description<br /></span><br />
+
+    <input type="number" oninput="this.value=Math.abs(this.value)" placeholder="Enter Quantity"
+      formControlName="quantity" />
+    <br /><span id="error" *ngIf="quantity && quantity.invalid && quantity.touched">*Invalid Quantity<br /></span><br />
+
+    <input type="number" step="any" placeholder="Enter Unit price" formControlName="unitPrice" min="1" />
+    <br /><span id="error" *ngIf="unitPrice && unitPrice.invalid && unitPrice.touched">*Invalid Unit
+      Price<br /></span><br />
+
+    <button [disabled]="loginForm.invalid" (click)="LoginForm()">Save</button>
+  </form>
+</div>
+
+<h5>{{ productInfo | json }}</h5>
